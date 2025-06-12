@@ -171,13 +171,18 @@
 
 /datum/quirk/mtraining1
 	name = "Medical Training"
-	desc = "I have basic medical training."
-	value = 2
+	desc = "I have some medical training and have stashed some supplies."
+	value = 2 //everyone wants this, everyone needs this.
 
 /datum/quirk/mtraining1/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/alchemy, 2, TRUE)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
+	H.mind.special_items["Needle"] = /obj/item/needle
+	H.mind.special_items["Bedroll"] = /obj/item/bedroll //for field surgery
+	H.mind.special_items["Surgery Bag"] = /obj/item/storage/belt/rogue/surgery_bag
+
 /datum/quirk/greenthumb
 	name = "Green Thumb"
 	desc = "I've always been rather good at tending to plants, and I have some powerful fertilizer stashed away and a women of ill repute. (Raises skill to journeyman)"
@@ -257,8 +262,8 @@
 
 /datum/quirk/languagesavant
 	name = "Polyglot"
-	desc = "I have always picked up on languages easily. I know the languages of all the races found in this land, and my flexible tongue is certainly useful in the bedchamber."
-	value = 2//Believe it or not, this is a really niche quirk with very few actual use-cases.
+	desc = "I have always picked up on languages easily. I know the languages of all the races found in this land."
+	value = 2 //Believe it or not, this is a really niche quirk with very few actual use-cases.
 
 /datum/quirk/languagesavant/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -269,10 +274,9 @@
 	H.grant_language(/datum/language/orcish)
 	H.grant_language(/datum/language/beast)
 	H.grant_language(/datum/language/draconic)
-	H.grant_language(/datum/language/canilunzt)
 	H.grant_language(/datum/language/grenzelhoftian)
-	ADD_TRAIT(H, TRAIT_GOODLOVER, QUIRK_TRAIT)
 
+/* this does not work that way in this code and may be op so disabled
 /datum/quirk/civilizedbarbarian
 	name = "Tavern Brawler"
 	desc = "I am a barstool warrior. Improvised weapons are more effective in my hands."
@@ -281,11 +285,12 @@
 /datum/quirk/civilizedbarbarian/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
+*/
 
 /datum/quirk/mastercraftsmen // Named this way to absorb the old quirk. Keeps old saves cleaner without them needing to reset quirks.
 	name = "Jack of All Trades"
 	desc = "I've always had steady hands. I'm experienced enough in most fine craftsmanship to make a career out of it, if I can procure my own tools."
-	value = 3 //
+	value = 3 // you get no tools but you get 3 to everything.
 
 /datum/quirk/mastercraftsmen/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -307,7 +312,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 4, TRUE) // Needed to install things like levers in a house. This unfortunately means construction workers can make illegal firearms.
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 4, TRUE) // Needed to install things like levers in a house. This unfortunately means construction workers can make traps and shit.
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE) // Pretty sure some crafting stations use this. Also stone axes and whatever other basic tools they need.
 	H.mind.special_items["Handcart"] = /obj/structure/handcart //TO-DO: Implement sawmill and the trait to use it. Giving them a handcart to move materials with.
 	H.mind.special_items["Sack 1"] = /obj/item/storage/roguebag
@@ -320,13 +325,28 @@
 
 /datum/quirk/mastersmith/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 4, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
-	H.mind.special_items["Hammer"] = /obj/item/rogueweapon/hammer/claw // works same as normal hammer.
+	H.mind.special_items["Hammer"] = /obj/item/rogueweapon/hammer
 	H.mind.special_items["Tongs"] = /obj/item/rogueweapon/tongs
 	H.mind.special_items["Coal"] = /obj/item/rogueore/coal
+
+
+/datum/quirk/mastertailor
+	name = "Practiced Tailor"
+	desc = "I'm practiced in working with needle, thread, and loom. I also have a needle, thread, and scissors hidden away. I can stitch flesh somewhat aswell but..."
+	value = 1
+
+/datum/quirk/mastertailor/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)//Being skilled with a needle offers some overlap with stitching up peoples' wounds.
+	H.mind.special_items["Scissors"] = /obj/item/rogueweapon/huntingknife/scissors/steel
+	H.mind.special_items["Needle"] = /obj/item/needle
+	H.mind.special_items["Thread"] = /obj/item/natural/bundle/fibers/full
 
 /datum/quirk/bleublood
 	name = "Noble Lineage"
@@ -370,6 +390,21 @@
 	H.change_stat("speed", -2)
 	H.transform = H.transform.Scale(1.25, 1.25)
 	H.transform = H.transform.Translate(0, (0.25 * 16))
+	H.update_transform()
+
+/datum/quirk/shelfproblems
+	name = "Dwarfism"
+	desc = "I am smaller than the rest of my kind..."
+	value = 0
+
+/datum/quirk/shelfproblems/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	//we cant make quirk blackslists but this basically cancel out the giantism
+	H.change_stat("strength", -2)
+	H.change_stat("constitution", -1)
+	H.change_stat("speed", 2)
+	H.transform = H.transform.Scale(0.90, 0.90)
+	H.transform = H.transform.Translate(0, -2.2)
 	H.update_transform()
 
 //negative

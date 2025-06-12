@@ -2339,7 +2339,6 @@
 #include "modular_hearthstone\code\modules\spells\roguetown\flagellant.dm"
 #include "modular_helmsguard\code\modules\mobs\farm\horse.dm"
 #include "modular_helmsguard\code\modules\mobs\farm\wraiths.dm"
-#include "modular_stonehedge\eldertrees.dm"
 #include "code\controllers\subsystem\quirks.dm"
 #include "modular_stonehedge\code\datums\traits\_quirk.dm"
 #include "modular_stonehedge\code\datums\traits\good.dm"
