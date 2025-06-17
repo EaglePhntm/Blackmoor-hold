@@ -1,6 +1,7 @@
+//By Vide Noir https://github.com/EaglePhntm. All sprites except chain bikini.
 //bikini
 /obj/item/clothing/suit/roguetown/armor/leather/bikini
-	name = "leather bikini"
+	name = "leather corslet"
 	desc = "Flexible cowhide armor. Lightweight, better than nothing. Now in tasteful bikini shape."
 	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
@@ -19,7 +20,7 @@
 	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
-	name = "studded leather bikini"
+	name = "studded leather corslet"
 	desc = "Studded leather is the most durable of all hides and leathers and about as light. This one is in bikini form."
 	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
@@ -38,7 +39,7 @@
 	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
-	name = "hide bikini"
+	name = "hide corslet"
 	desc = "A light armor of wildbeast hide. Far more durable than leather. This will not keep a person warm though..."
 	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
@@ -57,7 +58,7 @@
 	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
-	name = "hardened leather bikini"
+	name = "hardened leather corslet"
 	desc = "Sturdy, durable, flexible. Will keep you alive in style, and now even less than before!"
 	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
@@ -84,7 +85,7 @@
 	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/bikini
-	name = "half-plate bikini"
+	name = "half-plate corslet"
 	desc = "Half plate in bikini form, still just as protective somehow."
 	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
@@ -103,7 +104,7 @@
 	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
-	name = "fullplate bikini"
+	name = "fullplate corslet"
 	desc = "Full plate in bikini form, full package and full exposure."
 	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
@@ -121,7 +122,7 @@
 	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
-	name = "chainmail bikini"
+	name = "chainmail corslet"
 	desc = "Try not to get your nipples caught between the chains, and other bits."
 	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
@@ -140,7 +141,7 @@
 	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini
-	name = "iron chainmail bikini"
+	name = "iron chainmail corslet"
 	desc = "Try not to get your nipples caught between the chains, and other bits."
 	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
@@ -164,11 +165,10 @@
 //recipes
 
 /datum/anvil_recipe/armor/studdedbikini
-	name = "Studded Leather Bikini (+Leather Armor/Bikini/Bra)"
+	name = "Studded Leather Corslet (+ Leather Corslet)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
-	i_type = "Armor"
 
 /datum/anvil_recipe/armor/studdedbra
 	name = "Studded Leather Bra (+Leather Armor/Bikini/Bra)"
@@ -177,27 +177,24 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini/bra
 	i_type = "Armor"
 
-/datum/anvil_recipe/armor/ironchainkini
-	name = "Iron Chainmail Bikini (+1 Cloth)"
-	req_bar = /obj/item/ingot/iron
+/datum/anvil_recipe/armor/steel/chainkini
+	name = "Chainmail Corslet (+1 Cloth)"
+	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/natural/cloth)
-	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini
-	craftdiff = 1
-	i_type = "Armor"
+	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 
 /datum/anvil_recipe/armor/ironchainbra
-	name = "Iron Chainmail Bra"
+	name = "Iron Chainmail Corslet"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini/bra
 	i_type = "Armor"
 
-/datum/anvil_recipe/armor/platebikini
-	name = "Half-Plate Bikini (+2 Steel +1 Cloth)"
+/datum/anvil_recipe/armor/steel/platebikini
+	name = "Half-Plate Corslet (+1 Steel, +1 Cured Leather)"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
+	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	craftdiff = 3
-	i_type = "Armor"
 
 /datum/anvil_recipe/armor/platebra
 	name = "Half-Plate Bra (+2 Steel)"
@@ -207,23 +204,22 @@
 	craftdiff = 3
 	i_type = "Armor"
 
-/datum/anvil_recipe/armor/platefullbikini
-	name = "Full-Plate Bikini (+3 Steel +1 Cloth)"
+/datum/anvil_recipe/armor/steel/fullplatebikini
+	name = "Full-Plate Corslet (+2 Steel, +1 Cured Leather)"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	craftdiff = 4
-	i_type = "Armor"
 
 /datum/anvil_recipe/armor/platefullbra
-	name = "Full-Plate Bikini (+3 Steel)"
+	name = "Full-Plate Bra (+3 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/bikini/bra
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/leather/hardenedbikini
-	name = "hardened leather bikini"
+	name = "hardened leather corslet"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
@@ -237,11 +233,18 @@
 	craftdiff = 4
 
 
-/datum/crafting_recipe/roguetown/sewing/bikini
-	name = "leather bikini armor"
+/datum/crafting_recipe/roguetown/leather/bikini
+	name = "leather corslet (2 leather)"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
-	reqs = list(/obj/item/natural/hide = 2)
-	sellprice = 24	//Costs about ~12 to make.
+	reqs = list(/obj/item/natural/hide/cured = 2)
+	sellprice = 26
+
+/datum/crafting_recipe/roguetown/leather/hidebikini
+	name = "hide corslet (2 leather, 1 fur)"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fur = 1)
+	sellprice = 26
 
 /datum/crafting_recipe/roguetown/sewing/bra
 	name = "leather bra armor"
@@ -249,13 +252,6 @@
 	reqs = list(/obj/item/natural/hide = 2)
 	sellprice = 26
 
-/datum/crafting_recipe/roguetown/sewing/hidebikini
-	name = "hide bikini armor"
-	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
-	reqs = list(/obj/item/natural/hide = 1,
-				/obj/item/natural/fur = 1)
-	sellprice = 28	//Costs about ~16 to make. So, HIGH resale.
-	craftdiff = 2	//Harder craft.
 
 /datum/crafting_recipe/roguetown/sewing/hidebra
 	name = "hide bra armor"
@@ -266,18 +262,8 @@
 
 ///CONVERSIONS
 
-/datum/crafting_recipe/roguetown/leatherskirtconv
-	name = "leather pants to skirt"
-	result = list(/obj/item/clothing/under/roguetown/trou/leather/skirt)
-	reqs = list(/obj/item/clothing/under/roguetown/trou/leather = 1)
-
-/datum/crafting_recipe/roguetown/leatherskirtconvtwo
-	name = "hardened leather pants to skirt"
-	result = list(/obj/item/clothing/under/roguetown/trou/leather/advanced/skirt)
-	reqs = list(/obj/item/clothing/under/roguetown/trou/leather/advanced = 1)
-
 /datum/crafting_recipe/roguetown/larmorconvone
-	name = "leather armor to bikini"
+	name = "leather armor to corslet"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather = 1)
 
@@ -287,7 +273,7 @@
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/bikini = 1)
 
 /datum/crafting_recipe/roguetown/hidearmorconvone
-	name = "hide armor to bikini"
+	name = "hide armor to corslet"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/hide = 1)
 
@@ -303,7 +289,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/studdedconvone
-	name = "studded armor to bikini"
+	name = "studded armor to corslet"
 	result = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/studded = 1)
 
@@ -313,7 +299,7 @@
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini = 1)
 
 /datum/crafting_recipe/roguetown/lharmorconvone
-	name = "hardened leather armor to bikini"
+	name = "hardened leather armor to corslet"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced = 1)
 
@@ -333,7 +319,7 @@
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/chainmail/bikini = 1)
 
 /datum/crafting_recipe/roguetown/halfplateconvone
-	name = "halfplate armor to bikini"
+	name = "halfplate armor to corslet"
 	result = list(/obj/item/clothing/suit/roguetown/armor/plate/bikini)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate = 1)
 
@@ -343,7 +329,7 @@
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/bikini = 1)
 
 /datum/crafting_recipe/roguetown/halfplateconvone
-	name = "fullplate armor to bikini"
+	name = "fullplate armor to corslet"
 	result = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bikini)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/full = 1)
 

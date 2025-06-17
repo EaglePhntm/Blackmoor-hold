@@ -309,12 +309,6 @@
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded
 
-/datum/anvil_recipe/armor/studdedbikini
-	name = "Studded Leather Corslet (+ Leather Corslet)"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
-	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
-
 /datum/anvil_recipe/armor/iron/helmethorned
 	name = "Horned Helmet"
 	req_bar = /obj/item/ingot/iron
@@ -343,12 +337,6 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail
 	craftdiff = 2
-
-/datum/anvil_recipe/armor/steel/chainkini
-	name = "Chainmail Corslet (+1 Cloth)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/natural/cloth)
-	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 
 /datum/anvil_recipe/armor/steel/hauberk
 	name = "Hauberk (+1 Steel)"
@@ -404,20 +392,6 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate, /obj/item/ingot/steel, /obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate
-	craftdiff = 4
-
-/datum/anvil_recipe/armor/steel/platebikini
-	name = "Half-Plate Corslet (+1 Steel, +1 Cured Leather)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
-	craftdiff = 3
-
-/datum/anvil_recipe/armor/steel/fullplatebikini
-	name = "Full-Plate Corslet (+2 Steel, +1 Cured Leather)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/hide/cured)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	craftdiff = 4
 
 /datum/anvil_recipe/armor/steel/coatplates
@@ -484,18 +458,6 @@
 	name = "Brayette"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/under/roguetown/brayette
-
-/datum/anvil_recipe/armor/steel/chainskirt
-	name = "Chain Skirt"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/under/roguetown/chainlegs/skirt
-
-/datum/anvil_recipe/armor/steel/plateskirt
-	name = "Plate Tassets (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/under/roguetown/platelegs/skirt
-	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/platelegs
 	name = "Plated Chausses (+1 Steel)"

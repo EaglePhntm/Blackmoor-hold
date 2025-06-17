@@ -87,19 +87,6 @@
 	result = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	reqs = list(/obj/item/natural/hide/cured = 2)
 
-/datum/crafting_recipe/roguetown/leather/bikini
-	name = "leather corslet (2 leather)"
-	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
-	reqs = list(/obj/item/natural/hide/cured = 2)
-	sellprice = 26
-
-/datum/crafting_recipe/roguetown/leather/hidebikini
-	name = "hide corslet (2 leather, 1 fur)"
-	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
-	reqs = list(/obj/item/natural/hide/cured = 2,
-				/obj/item/natural/fur = 1)
-	sellprice = 26
-
 /datum/crafting_recipe/roguetown/leather/cloak
 	name = "rain cloak (2 leather)"
 	result = /obj/item/clothing/cloak/raincloak/brown

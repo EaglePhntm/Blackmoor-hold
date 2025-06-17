@@ -421,23 +421,6 @@
 	. = ..()
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
-/obj/item/clothing/under/roguetown/chainlegs/skirt
-	name = "steel chain skirt"
-	desc = "A knee-length maille skirt, warding cuts against the thighs without slowing the feet."
-	icon_state = "chain_skirt"
-	item_state = "chain_skirt"
-	body_parts_covered = GROIN
-	armor_class = ARMOR_CLASS_LIGHT
-
-/obj/item/clothing/under/roguetown/platelegs/skirt
-	name = "steel plate tassets"
-	desc = "A set of hanging plates of steel to protect the hips and thighs without too much burden."
-	gender = PLURAL
-	icon_state = "plate_skirt"
-	item_state = "plate_skirt"
-	body_parts_covered = GROIN
-	armor_class = ARMOR_CLASS_LIGHT
-
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"
 	desc = ""

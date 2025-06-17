@@ -18,7 +18,7 @@
 	flags_inv = null
 	genital_access = TRUE
 
-//recipes
+//RECIPES
 
 /datum/anvil_recipe/armor/chainfishnet
 	name = "Chain Fishnet"
