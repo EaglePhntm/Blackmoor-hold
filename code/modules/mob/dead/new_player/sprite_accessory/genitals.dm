@@ -22,9 +22,9 @@
 				else
 					return "slit_2"
 	if(pp.erect_state == ERECT_STATE_HARD)
-		return "[icon_state]_[min(3,pp.penis_size+1)]"
+		return "[icon_state]_[min(3,pp.organ_size+1)]"
 	else
-		return "[icon_state]_[pp.penis_size]"
+		return "[icon_state]_[pp.organ_size]"
 
 /datum/sprite_accessory/penis/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	if(owner.underwear)
@@ -94,8 +94,8 @@
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BELT, OFFSET_BELT_F)
 
 /datum/sprite_accessory/testicles/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
-	var/obj/item/organ/testicles/testes = organ
-	return "[icon_state]_[testes.ball_size]"
+	var/obj/item/organ/filling_organ/testicles/testes = organ
+	return "[icon_state]_[testes.organ_size]"
 
 /datum/sprite_accessory/testicles/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	if(owner.underwear)
@@ -116,8 +116,8 @@
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/breasts/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
-	var/obj/item/organ/breasts/badonkers = organ
-	return "[icon_state]_[badonkers.breast_size]"
+	var/obj/item/organ/filling_organ/breasts/badonkers = organ
+	return "[icon_state]_[badonkers.organ_size]"
 
 /datum/sprite_accessory/breasts/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_ID, OFFSET_ID_F)
