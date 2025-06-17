@@ -12,7 +12,7 @@
 	color = "#ff9494"
 	taste_description = "tangy sweetness"
 	overdose_threshold = 0
-	metabolization_rate = 1 * REAGENTS_METABOLISM
+	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
 
 /datum/reagent/medicine/minorhealthpot/on_mob_life(mob/living/carbon/M) // Heals half as much as health potion, but not wounds.
