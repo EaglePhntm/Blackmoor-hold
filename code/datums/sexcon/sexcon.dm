@@ -107,7 +107,7 @@
 /datum/sex_controller/proc/start(mob/living/new_target)
 	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
 		to_chat(user, "<span class='warning'>The idea repulses me!</span>")
-		user.cursed_freak_out()
+		user.freak_out()
 		return FALSE
 
 	set_target(new_target)
@@ -250,7 +250,7 @@
 		user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
-	SSticker.cums++
+	//SSticker.cums++
 
 /datum/sex_controller/proc/after_intimate_climax()
 	if(user == target)
@@ -422,7 +422,7 @@
 	if(prob(50))
 		return
 	last_pain = world.time
-	if(!user.has_flaw(/datum/charflaw/addiction/masochist))
+	if(!user.has_flaw(/datum/charflaw/masochist))
 		if(pain_amt >= PAIN_HIGH_EFFECT)
 			var/pain_msg = pick(list("IT HURTS!!!", "IT NEEDS TO STOP!!!", "I CAN'T TAKE IT ANYMORE!!!"))
 			to_chat(user, span_boldwarning(pain_msg))
@@ -457,7 +457,7 @@
 
 /datum/sex_controller/proc/update_aching(pain_amt)
 	if(pain_amt >= LOINHURT_GAIN_THRESHOLD)
-		if(user.has_flaw(/datum/charflaw/addiction/masochist))
+		if(user.has_flaw(/datum/charflaw/masochist))
 			user.sate_addiction()
 			user.add_stress(/datum/stressevent/loinachegood)
 			return
@@ -521,6 +521,8 @@
 	return TRUE
 
 /datum/sex_controller/proc/considered_limp()
+	if(issimple(user) && user.seeksfuck) //npcs always considered hard.
+		return FALSE
 	if(arousal >= AROUSAL_HARD_ON_THRESHOLD)
 		return FALSE
 	return TRUE
@@ -657,8 +659,6 @@
 		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target))
 			break
 		if(current_action == null || performed_action_type != current_action)
-			break
-		if(need_to_be_violated(target) && !can_violate_victim(target))
 			break
 		if(!can_perform_action(current_action))
 			break
@@ -827,3 +827,79 @@
 				var/obj/item/bodypart/groin = target.get_bodypart(check_zone(BODY_ZONE_PRECISE_GROIN))
 				groin.add_wound(/datum/wound/fracture)
 			}
+
+//other things necessary packed here
+/datum/stressevent/loinache
+	timer = 1 MINUTES
+	stressadd = 2
+	desc = list(span_red("My loins took a bad beating!"),span_red("My loins got slammed badly!"),span_red("My loins got beaten badly!"))
+
+/datum/stressevent/loinachegood
+	timer = 5 MINUTES
+	stressadd = -3
+	desc = list(span_green("My loins took a GOOD beating!~"),span_green("My loins got slammed GOOD!"),span_green("My loins got beaten GOOD!"))
+
+/datum/reagent/water/pussjuice
+	name = "pussy juice"
+	description = "A strange slightly gooey substance."
+
+
+/datum/reagent/consumable/cum
+	name = "Semen"
+	description = "A strange white liquid produced by testicles..."
+	color = "#c6c6c6"
+	taste_description = "salty slime"
+	glass_icon_state = "glass_white"
+	glass_name = "glass of semen"
+	glass_desc = ""
+	var/virile = TRUE
+
+
+/datum/reagent/consumable/cum/on_transfer(atom/A, method, trans_volume)
+	. = ..()
+	if(istype(A, /obj/item/organ/filling_organ/vagina) && virile)
+		var/obj/item/organ/filling_organ/vagina/forgan = A
+		if(forgan.fertility && !forgan.pregnant)
+			if(prob(20))
+				forgan.be_impregnated() //boom
+
+/datum/reagent/consumable/cum/on_mob_life(mob/living/carbon/M)
+	if(M.getBruteLoss() && prob(20))
+		M.heal_bodypart_damage(1,0, 0)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
+			H.adjust_hydration(5)
+			H.adjust_nutrition(5)
+		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
+			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	. = 1
+	..()
+
+/datum/reagent/consumable/cum/sterile
+	virile = FALSE
+
+/datum/reagent/consumable/cum/sterile/old //used in statue fountain.
+	name = "Old Semen"
+	description = "Disgusting... smelly slime... And somewhat yellow. This was magically, barely preserved through decades... It used to be fine, even clear as water until I severed it from it's home."
+	color = "#c7c49e"
+	taste_description = "salty, disgusting moldy slime"
+	glass_icon_state = "glass_white"
+	glass_name = "glass of old semen"
+
+/datum/reagent/consumable/cum/sterile/old/on_mob_life(mob/living/carbon/M)
+	if(M.getBruteLoss() && prob(20))
+		M.heal_bodypart_damage(1,0, 0)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
+			H.adjust_hydration(5)
+			H.adjust_nutrition(5)
+		if(!HAS_TRAIT(H, TRAIT_ROT_EATER))
+			H.adjustToxLoss(3, TRUE) //this shit is toxic.
+			H.add_nausea(10)
+			if(prob(5))
+				to_chat(M, span_notice("[pick("God, I am going to puke...","My stomach is crying for help...","I feel sick...","That was disgusting... I feel sick...")]"))
+
+	. = 1
+	..()

@@ -1,3 +1,5 @@
+#define COMSIG_FOOD_STUFFED "food_stuffed"		//alt eating
+
 //weird lewd magic eating.
 /obj/item/reagent_containers/food/snacks/proc/sussyeat(mob/living/M, mob/living/user, def_zone, pussy = FALSE)
 	var/eatverbnew = pick("stuff","slip","push","tuck","pack","feed")

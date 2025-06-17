@@ -7,8 +7,7 @@
 /datum/sex_action/force_footjob/shows_on_menu(mob/living/user, mob/living/target)
 	if(!target.erpable && issimple(target))
 		return FALSE
-	if(user.client.prefs.defiant && issimple(target))
-		return FALSE
+
 	if(user == target)
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_TINY)) //Fairy is too small and weak to force this

@@ -73,7 +73,6 @@
 	new /obj/item/magic/infernalash(deathspot)
 	new /obj/item/magic/infernalash(deathspot)
 	update_icon()
-	sleep(1)
 	qdel(src)
 
 

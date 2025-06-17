@@ -5,8 +5,7 @@
 /datum/sex_action/nipple_sex/shows_on_menu(mob/living/user, mob/living/target)
 	if(!target.erpable && issimple(target))
 		return FALSE
-	if(user.client.prefs.defiant && issimple(target))
-		return FALSE
+
 	if(!user.has_quirk(/datum/quirk/weirdo) && !target.has_quirk(/datum/quirk/weirdo))
 		return FALSE
 	if(user == target)

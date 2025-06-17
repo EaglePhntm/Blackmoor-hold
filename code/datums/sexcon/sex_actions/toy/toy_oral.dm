@@ -4,8 +4,7 @@
 /datum/sex_action/toy_oral/shows_on_menu(mob/living/user, mob/living/target)
 	if(!target.erpable && issimple(target))
 		return FALSE
-	if(user.client.prefs.defiant && issimple(target))
-		return FALSE
+
 	if(user != target)
 		return FALSE
 	if(!get_dildo_in_either_hand(user))
