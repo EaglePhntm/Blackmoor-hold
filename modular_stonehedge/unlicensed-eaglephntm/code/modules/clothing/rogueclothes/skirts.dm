@@ -18,12 +18,12 @@
 
 /obj/item/clothing/under/roguetown/chainlegs/iron/studdedskirt
 	name = "studded skirt"
-	icon = 'modular_stonehedge/icons/armor/pants.dmi'
-	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
+	icon = 'modular_stonehedge/icons/clothing/armor/pants.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/pants.dmi'
 	armor = ARMOR_LEATHER_STUDDED
 	desc = "Short studded skirt made of fine leather and iron."
 	icon_state = "studdedskirt"
-	genitalaccess = TRUE
+	genital_access = TRUE
 
 /obj/item/clothing/under/roguetown/chainlegs/iron/skirt
 	name = "iron chain skirt"

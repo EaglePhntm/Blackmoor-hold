@@ -19,7 +19,7 @@
 	var/list/wCount = M.get_wounds()
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL) //can not overfill
 		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0 && prob(50)) //half as effective as a normal health pot but still heals wounds.
+	if(wCount.len > 0)
 		M.heal_wounds(10)
 		M.update_damage_overlays()
 		if(prob(10))
@@ -27,20 +27,13 @@
 	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
 		if(R != src)
 			M.reagents.remove_reagent(R.type,1)
-	M.adjustBruteLoss(-0.5, 0) // 20u = 25 points of healing
-	M.adjustFireLoss(-0.5, 0)
-	M.adjustToxLoss(-0.5, 0)
+	M.adjustBruteLoss(-1, 0)
+	M.adjustFireLoss(-1, 0)
+	M.adjustToxLoss(-1, 0)
 	M.adjustOxyLoss(-1.5, 0)
 	M.adjustCloneLoss(-1, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -1)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART, -1)
-	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -1)
-	M.adjustOrganLoss(ORGAN_SLOT_EARS, -1)
-	M.adjustOrganLoss(ORGAN_SLOT_EYES, -1)
-	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -1)
-	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -1)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -1)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1)
+	for(var/obj/item/organ/organny in M.internal_organs)
+		M.adjustOrganLoss(organny.slot, -3)
 	..()
 	. = 1
 
@@ -79,23 +72,12 @@
 		M.update_damage_overlays()
 		if(prob(10))
 			to_chat(M, span_nicegreen("I feel my wounds mending."))
-	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
-		if(R != src)
-			M.reagents.remove_reagent(R.type,2)
-	M.adjustBruteLoss(-1, 0) // 20u = 50 points of healing
-	M.adjustFireLoss(-1, 0)
-	M.adjustToxLoss(-1, 0)
+	M.adjustBruteLoss(-3, 0)
+	M.adjustFireLoss(-3, 0)
 	M.adjustOxyLoss(-3, 0)
-	M.adjustCloneLoss(-2, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -2)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART, -2)
-	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -2)
-	M.adjustOrganLoss(ORGAN_SLOT_EARS, -2)
-	M.adjustOrganLoss(ORGAN_SLOT_EYES, -2)
-	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -2)
-	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -2)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -2)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -2)
+	M.adjustCloneLoss(-3, 0)
+	for(var/obj/item/organ/organny in M.internal_organs)
+		M.adjustOrganLoss(organny.slot, -3)
 	..()
 	. = 1
 
@@ -117,23 +99,12 @@
 		M.update_damage_overlays()
 		if(prob(10))
 			to_chat(M, span_nicegreen("I feel my wounds mending."))
-	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
-		if(R != src)
-			M.reagents.remove_reagent(R.type,3)
-	M.adjustBruteLoss(-1.5, 0) // 20u = 150 points of healing.
-	M.adjustFireLoss(-1.5, 0)
-	M.adjustToxLoss(-1.5, 0)
+	M.adjustBruteLoss(-7, 0) // 20u = 50 points of healing
+	M.adjustFireLoss(-7, 0)
 	M.adjustOxyLoss(-5, 0)
-	M.adjustCloneLoss(-3, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -3)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART, -3)
-	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -3)
-	M.adjustOrganLoss(ORGAN_SLOT_EARS, -3)
-	M.adjustOrganLoss(ORGAN_SLOT_EYES, -3)
-	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -3)
-	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -3)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -3)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3)
+	M.adjustCloneLoss(-7, 0)
+	for(var/obj/item/organ/organny in M.internal_organs)
+		M.adjustOrganLoss(organny.slot, -7)
 	..()
 	. = 1
 
@@ -233,6 +204,29 @@
 			holder.remove_reagent(R, 3)
 	..()
 	. = 1
+
+/datum/reagent/medicine/antipregnancy
+	name = "Antipregnancy Potion"
+	description = "Fixes mistakes."
+	reagent_state = LIQUID
+	color = "#a9326a"
+	taste_description = "worries"
+	overdose_threshold = 60
+	metabolization_rate = REAGENTS_METABOLISM
+	alpha = 200
+
+/datum/reagent/medicine/antipregnancy/on_mob_life(mob/living/carbon/M)
+	for(var/obj/item/organ/filling_organ/vagina/forgan in M.internal_organs)
+		if(forgan.pregnant)
+			to_chat(M, "I feel like I lost a part of me. The pregnancy is no more.")
+			forgan.undo_preggoness()
+	M.add_nausea(2)
+	..()
+	. = 1
+
+/datum/reagent/medicine/antipregnancy/overdose_process(mob/living/carbon/M)
+	M.add_nausea(9)
+	M.adjustToxLoss(3, 0)
 
 /* Buff potions
 	Previously, it would apply a status effect to the mob lasting for 93 / 300 seconds and remove everything
@@ -520,4 +514,3 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 		M.reagents.add_reagent(src, rand(1,3))
 		to_chat(M, span_small("I feel even worse..."))
 	return ..()
-	

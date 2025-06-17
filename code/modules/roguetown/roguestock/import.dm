@@ -294,14 +294,20 @@
 	new /obj/item/natural/glass(src)
 	new /obj/item/natural/glass(src)
 
+/datum/roguestock/import/antipregger
+	name = "Crate of Anti Pregnancy Potions"
+	desc = "Pink that fixes mistakes."
+	item_type = /obj/structure/closet/crate/chest/steward/antipregger
+	export_price = 50
+	importexport_amt = 1
 
-
-
-
-
-
-
-
+/obj/structure/closet/crate/chest/steward/antipregger/Initialize()
+	. = ..()
+	new /obj/item/reagent_containers/glass/bottle/alchemical/antipregnancy(src)
+	new /obj/item/reagent_containers/glass/bottle/alchemical/antipregnancy(src)
+	new /obj/item/reagent_containers/glass/bottle/alchemical/antipregnancy(src)
+	new /obj/item/reagent_containers/glass/bottle/alchemical/antipregnancy(src)
+	new /obj/item/reagent_containers/glass/bottle/alchemical/antipregnancy(src)
 
 
 

@@ -38,13 +38,11 @@
 	created_item = list(/obj/item/dildo/gold, /obj/item/dildo/gold, /obj/item/dildo/gold)
 	i_type = "Utilities"
 
-/* No glass here unfortunately.
 /datum/anvil_recipe/glass_dildo
 	name = "Glass dildo 3x"
-	req_bar = /obj/item/ingot/glass
+	req_bar = /obj/item/natural/glass
 	created_item = list(/obj/item/dildo/glass, /obj/item/dildo/glass, /obj/item/dildo/glass)
 	i_type = "Utilities"
-*/
 
 //plugs
 
@@ -88,10 +86,8 @@
 	created_item = list(/obj/item/dildo/plug/gold, /obj/item/dildo/plug/gold, /obj/item/dildo/plug/gold)
 	i_type = "Utilities"
 
-/* This place has no glass ingot
 /datum/anvil_recipe/glass_plug
 	name = "Glass plug 3x"
-	req_bar = /obj/item/ingot/glass
+	req_bar = /obj/item/natural/glass
 	created_item = list(/obj/item/dildo/plug/glass, /obj/item/dildo/plug/glass, /obj/item/dildo/plug/glass)
 	i_type = "Utilities"
-*/

@@ -66,6 +66,14 @@
 /obj/item/reagent_containers/glass/bottle/alchemical/lucpot
 	list_reagents = list(/datum/reagent/buff/fortune = 27)
 
+//dreamkeep stuff
+
+/obj/item/reagent_containers/glass/bottle/alchemical/antipregnancy
+	list_reagents = list(/datum/reagent/medicine/antipregnancy = 27)
+
+/obj/item/reagent_containers/glass/bottle/rogue/antipregnancy
+	list_reagents = list(/datum/reagent/medicine/antipregnancy = 45)
+
 //////////////////////////
 /// ALCOHOLIC BOTTLES ///
 //////////////////////////

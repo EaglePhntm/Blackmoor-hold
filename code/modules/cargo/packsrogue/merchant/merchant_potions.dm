@@ -122,3 +122,11 @@
 					/obj/item/reagent_containers/glass/bottle/alchemical/lucpot,
 					/obj/item/reagent_containers/glass/bottle/alchemical/lucpot,
 				)
+
+/datum/supply_pack/rogue/potions/antipregpot
+	name = "Antipregnancy Potion"
+	cost = 20
+	contains = list(
+					/obj/item/reagent_containers/glass/bottle/alchemical/antipregnancy,
+					/obj/item/reagent_containers/glass/bottle/alchemical/antipregnancy,
+				)
