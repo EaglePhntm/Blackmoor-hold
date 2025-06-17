@@ -76,14 +76,6 @@
 	flags_inv = HIDEBOOB
 	is_bra = TRUE
 
-/obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini/bra
-	name = "enhanced leather bra"
-	icon_state = "mastbra"
-	item_state = "mastbra"
-	desc = "This... bra is a craftsmanship marvel. Made with the finest leather. Strong, VERY VERY nimible, reliable."
-	flags_inv = HIDEBOOB
-	is_bra = TRUE
-
 /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	name = "half-plate corslet"
 	desc = "Half plate in bikini form, still just as protective somehow."
