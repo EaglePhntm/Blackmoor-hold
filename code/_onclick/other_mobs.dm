@@ -399,6 +399,7 @@
 						if(T.landsound)
 							playsound(T, T.landsound, 100, FALSE)
 						T.Entered(src)
+						check_funny_knockdown(src)
 				else
 					throw_at(A, 1, 1, src, spin = FALSE)
 				return

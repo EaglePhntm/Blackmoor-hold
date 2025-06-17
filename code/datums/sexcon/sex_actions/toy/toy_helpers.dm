@@ -12,7 +12,7 @@
 	for(var/obj/item/thing in user.held_items)
 		if(thing == null)
 			continue
-		if(istype(thing, /obj/item/dildo/silver))
+		if(istype(thing, /obj/item/dildo/silver)||istype(thing, /obj/item/dildo/plug/silver))
 			return TRUE
 	return null
 
