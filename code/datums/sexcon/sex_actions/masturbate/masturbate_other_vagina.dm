@@ -20,7 +20,7 @@
 		if(targethuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = targethuman.wear_pants
 			if(pantsies.flags_inv & HIDECROTCH)
-				if(!pantsies.genitalaccess)
+				if(!pantsies.genital_access)
 					return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE

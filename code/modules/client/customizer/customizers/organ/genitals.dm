@@ -113,7 +113,6 @@
 	organ_type = /obj/item/organ/penis/knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/knotted,
-		/datum/sprite_accessory/penis/knotted2,
 		)
 
 /datum/customizer_choice/organ/penis/equine

@@ -28,14 +28,14 @@
 		if(targethuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = targethuman.wear_pants
 			if(pantsies.flags_inv & HIDECROTCH)
-				if(!pantsies.genitalaccess)
+				if(!pantsies.genital_access)
 					return FALSE
 	if(ishuman(user))
 		var/mob/living/carbon/human/userhuman = user
 		if(userhuman.wear_shirt)
 			var/obj/item/clothing/suit/roguetown/shirtsies = userhuman.wear_shirt
 			if(shirtsies.flags_inv & HIDEBOOB)
-				if(shirtsies.genitalaccess == FALSE)
+				if(shirtsies.genital_access == FALSE)
 					return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_PENIS))
 		if(issimple(target) && target.gender == MALE && target.sexcon)

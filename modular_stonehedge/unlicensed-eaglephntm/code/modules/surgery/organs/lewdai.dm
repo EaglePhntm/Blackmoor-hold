@@ -7,7 +7,7 @@
 /mob/living
 
 	//You can use this with any living.
-	///Will this mob be given genitals and sexcontroller, therefore enabling erp panel, and basically enables everything else, key variable.
+	///Will this mob be given genitals and sexcontroller, therefore enabling erp panel, and basically enables everything else, key variable. Does not make em aggressively seek it.
 	var/erpable = FALSE
 
 	//You can not use the vars below with anything less than retaliate/rogue simple mobs, anything less dont have retaliate ai and required vars.
@@ -27,6 +27,7 @@
 	var/chasesfuck = FALSE
 	var/seekboredom = 0
 	var/show_genitals = FALSE
+	var/mouth_blocked = FALSE
 
 //--------------simple mobs ----------------
 //sex stuff brainrot for things like werevolves --vide noir
@@ -119,7 +120,7 @@
 					if(!L.lying)
 						L.emote("gasp")
 					if(L.wear_pants)
-						if(L.wear_pants.flags_inv & HIDECROTCH && !L.wear_pants.genitalaccess)
+						if(L.wear_pants.flags_inv & HIDECROTCH && !L.wear_pants.genital_access)
 							if(!L.cmode) //pants off if not in cmode
 								visible_message(span_danger("[src] manages to rip [L]'s [L.wear_pants.name] off!"))
 								var/obj/item/clothing/thepants = L.wear_pants
@@ -297,7 +298,7 @@
 					if(!L.lying) //i guess if already targeted but got up somehow.
 						L.emote("gasp")
 					if(L.wear_pants)
-						if(L.wear_pants.flags_inv & HIDECROTCH && !L.wear_pants.genitalaccess)
+						if(L.wear_pants.flags_inv & HIDECROTCH && !L.wear_pants.genital_access)
 							if(!L.cmode) //pants off if not in cmode
 								visible_message(span_danger("[src] manages to rip [L]'s [L.wear_pants.name] off!"))
 								var/obj/item/clothing/thepants = L.wear_pants

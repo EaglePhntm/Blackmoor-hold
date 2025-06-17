@@ -25,7 +25,7 @@
 	experimental_onhip = TRUE
 	experimental_inhand = FALSE
 	nodismemsleeves = TRUE
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 	grid_width = 64
 	grid_height = 96
 
@@ -408,33 +408,6 @@
 	max_integrity = 300
 	sellprice = 100
 
-/obj/item/clothing/suit/roguetown/armor/leather/bikini
-	name = "leather corslet"
-	desc = "Flexible cowhide armor. Lightweight, better than nothing. Trimmed to protect the heart and hips."
-	body_parts_covered = CHEST|GROIN
-	icon_state = "leatherkini"
-	item_state = "leatherkini"
-	allowed_sex = list(FEMALE, MALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
-/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
-	name = "studded leather corslet"
-	desc = "Studded leather is the most durable of all hides and leathers and about as light. Trimmed to protect the heart and hips."
-	body_parts_covered = CHEST|GROIN
-	icon_state = "studleatherkini"
-	item_state = "studleatherkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
-/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
-	name = "hide corslet"
-	desc = "A light armor of wildbeast hide. Far more durable than leather. Trimmed to protect the heart and hips."
-	body_parts_covered = CHEST|GROIN
-	icon_state = "hidearmorkini"
-	item_state = "hidearmorkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
 /obj/item/clothing/suit/roguetown/armor/leather/vest
 	name = "leather vest"
 	desc = "A leather vest. Not very protective, but fashionable."
@@ -640,31 +613,6 @@
 	icon_state = "ornatehauberk"
 	item_state = "ornatehauberk"
 	max_integrity = 350
-
-
-
-
-/obj/item/clothing/suit/roguetown/armor/chainmail/bikini
-	name = "chainmail corslet"	// corslet, from the old French 'cors' or bodice, with the diminutive 'let', used to describe lightweight military armor since 1500. Chosen here to replace 'bikini', an extreme anachronism.
-	desc = "For the daring, affording maille's protection with light weight."
-	icon_state = "chainkini"
-	item_state = "chainkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-	body_parts_covered = CHEST|GROIN
-	armor_class = ARMOR_CLASS_LIGHT //placed in the medium category to keep it with its parent obj
-
-/obj/item/clothing/suit/roguetown/armor/plate/bikini
-	name = "half-plate corslet"
-	desc = "A high breastplate and hip armor allowing flexibility and great protection, save for the stomach."
-	body_parts_covered = CHEST|GROIN
-	icon_state = "halfplatekini"
-	item_state = "halfplatekini"
-	armor = ARMOR_CUIRASS // Identical to steel cuirass, but covering the groin instead of the vitals.
-	max_integrity = 300	// Identical to steel cuirasss. Same steel price.
-	allowed_sex = list(FEMALE)
-	armor_class = ARMOR_CLASS_MEDIUM
-	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/plate/half
 	slot_flags = ITEM_SLOT_ARMOR
@@ -934,19 +882,6 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
-
-
-/obj/item/clothing/suit/roguetown/armor/plate/full/bikini
-	name = "full-plate corslet"
-	desc = "Breastplate, pauldrons, couters, cuisses... did you forget something?"
-	icon_state = "platekini"
-	allowed_sex = list(FEMALE)
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	equip_delay_self = 8 SECONDS
-	unequip_delay_self = 8 SECONDS
-	equip_delay_other = 3 SECONDS
-	strip_delay = 6 SECONDS
-	smelt_bar_num = 3
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
 	slot_flags = ITEM_SLOT_ARMOR

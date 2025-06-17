@@ -21,7 +21,7 @@
 		if(userhuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = userhuman.wear_pants
 			if(pantsies.flags_inv & HIDECROTCH)
-				if(!pantsies.genitalaccess)
+				if(!pantsies.genital_access)
 					return FALSE
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_MOUTH))
 		return FALSE
@@ -56,7 +56,7 @@
 		var/oxyloss = 1.3
 		if(HAS_TRAIT(user, TRAIT_DEATHBYSNOOSNOO))
 			oxyloss*=2
-		if(!isseelie(user)) //cock too small
+		if(HAS_TRAIT(user, TRAIT_TINY)) //cock too small
 			user.sexcon.perform_sex_action(target, 0, 7, FALSE)
 		user.sexcon.perform_deepthroat_oxyloss(target, oxyloss)
 	target.sexcon.handle_passive_ejaculation()

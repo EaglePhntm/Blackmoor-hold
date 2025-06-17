@@ -8,11 +8,13 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 	color = "#7c6d5c"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	experimental_inhand = FALSE
+	genital_access = TRUE
+	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
@@ -179,7 +181,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDETAIL
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDETAIL
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	resistance_flags = FIRE_PROOF
@@ -197,7 +199,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	var/fanatic_wear = FALSE
@@ -226,7 +228,7 @@
 			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 			icon_state = "eorarobes"
 			fanatic_wear = FALSE
-			flags_inv = HIDEBOOB|HIDECROTCH
+			flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 			to_chat(usr, span_warning("Now wearing normally!"))
 	update_icon()
 	if(ismob(loc))

@@ -25,7 +25,7 @@
 		if(userhuman.wear_shirt)
 			var/obj/item/clothing/suit/roguetown/shirtsies = userhuman.wear_shirt
 			if(shirtsies.flags_inv & HIDEBOOB)
-				if(!shirtsies.genitalaccess)
+				if(!shirtsies.genital_access)
 					return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_BREASTS))
 		return FALSE

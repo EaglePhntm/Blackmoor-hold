@@ -21,7 +21,7 @@
 		if(userhuman.wear_shirt)
 			var/obj/item/clothing/suit/roguetown/shirtsies = userhuman.wear_shirt
 			if(shirtsies.flags_inv & HIDEBOOB)
-				if(shirtsies.genitalaccess == FALSE)
+				if(shirtsies.genital_access == FALSE)
 					return FALSE
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_MOUTH))
 		return FALSE

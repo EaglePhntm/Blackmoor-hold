@@ -1,0 +1,353 @@
+//bikini
+/obj/item/clothing/suit/roguetown/armor/leather/bikini
+	name = "leather bikini"
+	desc = "Flexible cowhide armor. Lightweight, better than nothing. Now in tasteful bikini shape."
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/clothing/armor/onmob/helpers/sleeves_armor.dmi'
+	icon_state = "leatherkini"
+	item_state = "leatherkini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/armor/leather/bikini/bra
+	name = "Leather armor bra"
+	icon_state = "leatherbra"
+	item_state = "leatherbra"
+	desc = "Flexible cowhide armor. Lightweight, better than nothing, Although the bottom half is literally covered by nothing, it somehow still protects the full torso!"
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
+	name = "studded leather bikini"
+	desc = "Studded leather is the most durable of all hides and leathers and about as light. This one is in bikini form."
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/clothing/armor/onmob/helpers/sleeves_armor.dmi'
+	icon_state = "studleatherkini"
+	item_state = "studleatherkini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini/bra
+	name = "studded Leather bra"
+	icon_state = "studleatherbra"
+	item_state = "studleatherbra"
+	desc = "Studded leather is the most durable of all hides and leathers and about as light. Although the bottom half is literally covered by nothing, it somehow still protects the full torso!"
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+	name = "hide bikini"
+	desc = "A light armor of wildbeast hide. Far more durable than leather. This will not keep a person warm though..."
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/clothing/armor/onmob/helpers/sleeves_armor.dmi'
+	icon_state = "hidearmorkini"
+	item_state = "hidearmorkini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini/bra
+	name = "hide bra"
+	icon_state = "hidearmorbra"
+	item_state = "hidearmorbra"
+	desc = "A light armor of wildbeast hide. Far more durable than leather. This will not keep a person warm though... The bottom half is literally covered by nothing, it somehow still protects the full torso!"
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
+	name = "hardened leather bikini"
+	desc = "Sturdy, durable, flexible. Will keep you alive in style, and now even less than before!"
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/clothing/armor/onmob/helpers/sleeves_armor.dmi'
+	icon_state = "advkini"
+	item_state = "advkini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini/bra
+	name = "hardened leather bra"
+	icon_state = "advbra"
+	item_state = "advbra"
+	desc = "Sturdy, durable, flexible. Will keep you alive in style, and now even... EVEN less than before!"
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini/bra
+	name = "enhanced leather bra"
+	icon_state = "mastbra"
+	item_state = "mastbra"
+	desc = "This... bra is a craftsmanship marvel. Made with the finest leather. Strong, VERY VERY nimible, reliable."
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/plate/bikini
+	name = "half-plate bikini"
+	desc = "Half plate in bikini form, still just as protective somehow."
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/clothing/armor/onmob/helpers/sleeves_armor.dmi'
+	icon_state = "halfplatekini"
+	item_state = "halfplatekini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/armor/plate/bikini/bra
+	name = "half-plate bra"
+	icon_state = "halfplatebra"
+	item_state = "halfplatebra"
+	desc = "Half plate that's even half-er, still just as protective somehow."
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/bikini
+	name = "fullplate bikini"
+	desc = "Full plate in bikini form, full package and full exposure."
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/clothing/armor/onmob/helpers/sleeves_armor.dmi'
+	icon_state = "platekini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/bikini/bra
+	name = "fullplate bra"
+	icon_state = "platebra"
+	item_state = "platebra"
+	desc = "The black and white line between absolute protection and none."
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/bikini
+	name = "chainmail bikini"
+	desc = "Try not to get your nipples caught between the chains, and other bits."
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	icon_state = "chainkini"
+	item_state = "chainkini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDEBOOB|HIDECROTCH
+
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bra
+	name = "chainmail bra"
+	icon_state = "chainbra"
+	item_state = "chainbra"
+	desc = "Try not to get your nipples caught between the chains."
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini
+	name = "iron chainmail bikini"
+	desc = "Try not to get your nipples caught between the chains, and other bits."
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	icon_state = "chainkini"
+	item_state = "chainkini"
+	color = "#9EA48E"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDEBOOB|HIDECROTCH
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini/bra
+	name = "iron chainmail bra"
+	icon = 'modular_stonehedge/icons/clothing/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/clothing/armor/onmob/armor.dmi'
+	icon_state = "chainbra"
+	item_state = "chainbra"
+	color = "#9EA48E"
+	desc = "Try not to get your nipples caught between the chains."
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+//recipes
+
+/datum/anvil_recipe/armor/studdedbikini
+	name = "Studded Leather Bikini (+Leather Armor/Bikini/Bra)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
+	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/studdedbra
+	name = "Studded Leather Bra (+Leather Armor/Bikini/Bra)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
+	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini/bra
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/ironchainkini
+	name = "Iron Chainmail Bikini (+1 Cloth)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini
+	craftdiff = 1
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/ironchainbra
+	name = "Iron Chainmail Bra"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini/bra
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platebikini
+	name = "Half-Plate Bikini (+2 Steel +1 Cloth)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
+	craftdiff = 3
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platebra
+	name = "Half-Plate Bra (+2 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini/bra
+	craftdiff = 3
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platefullbikini
+	name = "Full-Plate Bikini (+3 Steel +1 Cloth)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
+	craftdiff = 4
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/platefullbra
+	name = "Full-Plate Bikini (+3 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/bikini/bra
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/sewing/leather/hardenedbikini
+	name = "hardened leather bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/sewing/leather/hardenedbra
+	name = "hardened leather bra"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini/bra
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+
+/datum/crafting_recipe/roguetown/sewing/bikini
+	name = "leather bikini armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+	reqs = list(/obj/item/natural/hide = 2)
+	sellprice = 24	//Costs about ~12 to make.
+
+/datum/crafting_recipe/roguetown/sewing/bra
+	name = "leather bra armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini/bra
+	reqs = list(/obj/item/natural/hide = 2)
+	sellprice = 26
+
+/datum/crafting_recipe/roguetown/sewing/hidebikini
+	name = "hide bikini armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fur = 1)
+	sellprice = 28	//Costs about ~16 to make. So, HIGH resale.
+	craftdiff = 2	//Harder craft.
+
+/datum/crafting_recipe/roguetown/sewing/hidebra
+	name = "hide bra armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini/bra
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/natural/fur = 1)
+	sellprice = 26
+
+///CONVERSIONS
+
+/datum/crafting_recipe/roguetown/leatherskirtconv
+	name = "leather pants to skirt"
+	result = list(/obj/item/clothing/under/roguetown/trou/leather/skirt)
+	reqs = list(/obj/item/clothing/under/roguetown/trou/leather = 1)
+
+/datum/crafting_recipe/roguetown/leatherskirtconvtwo
+	name = "hardened leather pants to skirt"
+	result = list(/obj/item/clothing/under/roguetown/trou/leather/advanced/skirt)
+	reqs = list(/obj/item/clothing/under/roguetown/trou/leather/advanced = 1)
+
+/datum/crafting_recipe/roguetown/larmorconvone
+	name = "leather armor to bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather = 1)
+
+/datum/crafting_recipe/roguetown/larmorconvtwo
+	name = "leather bikini to bra"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini/bra
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/bikini = 1)
+
+/datum/crafting_recipe/roguetown/hidearmorconvone
+	name = "hide armor to bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/hide = 1)
+
+/datum/crafting_recipe/roguetown/hidearmorconvtwo
+	name = "hide bikini to bra"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini/bra
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini = 1)
+
+/datum/crafting_recipe/roguetown/furlinedankletsconv
+	name = "fur-lined boots to anklets"
+	result = /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
+	reqs = list(/obj/item/clothing/shoes/roguetown/boots/furlinedboots = 1)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/studdedconvone
+	name = "studded armor to bikini"
+	result = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini)
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/studded = 1)
+
+/datum/crafting_recipe/roguetown/studdedconvtwo
+	name = "studded bikini to bra"
+	result = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini/bra)
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini = 1)
+
+/datum/crafting_recipe/roguetown/lharmorconvone
+	name = "hardened leather armor to bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced = 1)
+
+/datum/crafting_recipe/roguetown/lharmorconvtwo
+	name = "hardened leather bikini to bra"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini/bra
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini = 1)
+
+/datum/crafting_recipe/roguetown/ichainkiniconv
+	name = "chainmail bikini to bra"
+	result = list(/obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini/bra)
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini = 1)
+
+/datum/crafting_recipe/roguetown/chainkiniconv
+	name = "chainmail bikini to bra"
+	result = list(/obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bra)
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/chainmail/bikini = 1)
+
+/datum/crafting_recipe/roguetown/halfplateconvone
+	name = "halfplate armor to bikini"
+	result = list(/obj/item/clothing/suit/roguetown/armor/plate/bikini)
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate = 1)
+
+/datum/crafting_recipe/roguetown/halfplateconvtwo
+	name = "halfplate bikini to bra"
+	result = list(/obj/item/clothing/suit/roguetown/armor/plate/bikini/bra)
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/bikini = 1)
+
+/datum/crafting_recipe/roguetown/halfplateconvone
+	name = "fullplate armor to bikini"
+	result = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bikini)
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/full = 1)
+
+/datum/crafting_recipe/roguetown/halfplateconvtwo
+	name = "fullplate bikini to bra"
+	result = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bikini/bra)
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bikini = 1)

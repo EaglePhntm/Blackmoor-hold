@@ -20,7 +20,7 @@
 		if(targethuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = targethuman.wear_pants
 			if(pantsies.flags_inv & HIDECROTCH)
-				if(!pantsies.genitalaccess)
+				if(!pantsies.genital_access)
 					return FALSE
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH))
 		return FALSE

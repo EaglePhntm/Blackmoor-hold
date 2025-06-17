@@ -110,7 +110,7 @@
 		var/tempdriprate = driprate
 		if((reagents.total_volume && spiller) || (reagents.total_volume > reagents.maximum_volume)) //spiller or above it's capacity to leak.
 			var/obj/item/clothing/blockingitem = H.mob_slot_wearing(blocker)
-			if(blockingitem && !blockingitem.genitalaccess) //we aint dripping a drop.
+			if(blockingitem && !blockingitem.genital_access) //we aint dripping a drop.
 
 			/*
 				tempdriprate = 0.1 //if worn slot cover it, drip nearly nothing.
@@ -161,7 +161,7 @@
 			for(var/obj/item/forgancontents as anything in forgan.contents)
 				if(!istype(forgancontents, /obj/item/dildo)) //dildo keeps stuff in even if you have no pants ig
 					var/obj/item/clothing/blockingitem = get_organ_blocker(H, zone)
-					if(!blockingitem || blockingitem.genitalaccess) //checks if the item has genitalaccess, like skirts, if not, it blocks the thing from flying off.
+					if(!blockingitem || blockingitem.genital_access) //checks if the item has genital_access, like skirts, if not, it blocks the thing from flying off.
 						if(prob(keepinsidechance))
 							if(H.client?.prefs.showrolls)
 								to_chat(H, span_alert("Damn! I lose my [pick(altnames)]'s grip on [english_list(contents)]! [keepinsidechance]%"))
@@ -194,7 +194,7 @@
 		var/obj/item/organ/filling_organ/breasts/tiddies = humanized.getorganslot(ORGAN_SLOT_BREASTS) // tiddy hehe
 		switch(user.zone_selected)
 			if(BODY_ZONE_CHEST) //chest
-				if(humanized.wear_shirt && (humanized.wear_shirt.flags_inv & HIDEBOOB || !humanized.wear_shirt.genitalaccess))
+				if(humanized.wear_shirt && (humanized.wear_shirt.flags_inv & HIDEBOOB || !humanized.wear_shirt.genital_access))
 					to_chat(user, span_warning("[humanized]'s chest must be exposed before I can milk [humanized.p_them()]!"))
 					return TRUE
 				if(!tiddies)
@@ -211,7 +211,7 @@
 					tiddies.reagents.trans_to(src, milk_to_take, transfered_by = user)
 					user.visible_message(span_notice("[user] milks [humanized] into \the [src]."), span_notice("I milk [humanized] into \the [src]."))
 			if(BODY_ZONE_PRECISE_GROIN) //groin
-				if(humanized.wear_pants && (humanized.wear_pants.flags_inv & HIDECROTCH || !humanized.wear_pants.genitalaccess))
+				if(humanized.wear_pants && (humanized.wear_pants.flags_inv & HIDECROTCH || !humanized.wear_pants.genital_access))
 					to_chat(user, span_warning("[humanized]'s groin must be exposed before I can milk [humanized.p_them()]!"))
 					return TRUE
 				var/obj/item/organ/filling_organ/testicles/testes = humanized.getorganslot(ORGAN_SLOT_TESTICLES)
@@ -230,6 +230,8 @@
 					user.visible_message(span_notice("[user] milks [humanized]'s cock into \the [src]."), span_notice("I milk [humanized]'s cock into \the [src]."))
 		return TRUE
 	. = ..()
+
+//ton of shit that is used
 
 //Bloat statuses
 //added and removed by filling_organs
@@ -277,4 +279,17 @@
 
 /obj/item/clothing
 	///is it like a skirt or thigh highs on pant slot that wont interfere with our bits?
-	var/genitalaccess = FALSE
+	var/genital_access = FALSE
+	///for bra only body armors that allow groin interactions.
+	var/is_bra = FALSE
+
+//this would go to surgery helpers normally.
+/proc/get_organ_blocker(mob/user, location = BODY_ZONE_CHEST)
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		for(var/obj/item/clothing/equipped_item in carbon_user.get_equipped_items(include_pockets = FALSE))
+			if(zone2covered(location, equipped_item.body_parts_covered))
+				//skips bra items if the location we are looking at is groin
+				if(equipped_item.is_bra && location == BODY_ZONE_PRECISE_GROIN)
+					continue
+				return equipped_item

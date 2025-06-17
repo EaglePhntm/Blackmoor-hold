@@ -11,7 +11,7 @@
 		if(userhuman.wear_shirt)
 			var/obj/item/clothing/suit/roguetown/shirtsies = userhuman.wear_shirt
 			if(shirtsies.flags_inv & HIDEBOOB)
-				if(shirtsies.genitalaccess == FALSE)
+				if(shirtsies.genital_access == FALSE)
 					return FALSE
 	var/obj/item/organ/filling_organ/breasts/userbreasts = user.getorgan(/obj/item/organ/filling_organ/breasts)
 	if(userbreasts.organ_size < 4)
@@ -34,7 +34,7 @@
 		if(userhuman.wear_shirt)
 			var/obj/item/clothing/suit/roguetown/shirtsies = userhuman.wear_shirt
 			if(shirtsies.flags_inv & HIDEBOOB)
-				if(shirtsies.genitalaccess == FALSE)
+				if(shirtsies.genital_access == FALSE)
 					return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_BREASTS))
 		return FALSE

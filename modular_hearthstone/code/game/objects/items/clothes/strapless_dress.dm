@@ -5,10 +5,11 @@
 	mob_overlay_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/dress.dmi'
 	name = "strapless dress"
 	desc = "It barely covers anything at all!"
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 	icon_state = "strapless"
 	sleevetype = null
 	sleeved = null
+	genital_access = TRUE
 
 //COLORS
 
@@ -32,7 +33,7 @@
 	mob_overlay_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/dress.dmi'
 	name = "strapless dress"
 	desc = "It barely covers anything at all!"
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 	icon_state = "strapless2"
 	icon = 'modular_hearthstone/icons/obj/items/clothes/dress.dmi'
 
