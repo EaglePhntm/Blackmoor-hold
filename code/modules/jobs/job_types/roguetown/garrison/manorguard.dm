@@ -161,7 +161,7 @@
 
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord			// Cant wear chainmail anymoooree
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded		//Helps against arrows; makes sense for a ranged-type role.
-	neck = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 
 	H.adjust_blindness(-3)
@@ -255,6 +255,7 @@
 	"Bascinet Helmet"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
 	"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
 	"Winged Helmet" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+	"Studded Leather Hood" = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced,
 	"None"
 	)
 	var/helmchoice = input("Choose your Helm.", "TAKE UP HELMS") as anything in helmets
@@ -303,7 +304,7 @@
 
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
-	neck = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
@@ -319,6 +320,7 @@
 	"Bascinet Helmet"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
 	"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
 	"Winged Helmet" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+	"Studded Leather Hood" = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced,
 	"None"
 	)
 	var/helmchoice = input("Choose your Helm.", "TAKE UP HELMS") as anything in helmets
