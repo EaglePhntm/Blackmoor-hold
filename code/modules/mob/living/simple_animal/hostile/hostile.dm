@@ -244,6 +244,11 @@
 		if(M.name in friends)
 			return FALSE
 
+	if(isliving(the_target))
+		var/mob/living/livingtarg = the_target
+		//least stretch lewd ai preventative, without this people are sure to get killed while gaped.
+		if(livingtarg.sexcon?.current_action && !livingtarg.mobility_flags & MOBILITY_STAND)
+			return FALSE
 	if(see_invisible < the_target.invisibility)//Target's invisible to us, forget it
 		return FALSE
 	if(search_objects < 2)
