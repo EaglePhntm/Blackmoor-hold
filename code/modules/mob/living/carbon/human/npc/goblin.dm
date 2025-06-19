@@ -115,13 +115,39 @@
 	id = "goblin"
 	species_traits = list(NO_UNDERWEAR,NOEYESPRITES)
 	inherent_traits = list(TRAIT_NOROGSTAM, TRAIT_RESISTCOLD, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_RADIMMUNE, TRAIT_CRITICAL_WEAKNESS, TRAIT_NASTY_EATER)
-	no_equip = list(SLOT_SHIRT, SLOT_WEAR_MASK, SLOT_GLOVES, SLOT_SHOES, SLOT_PANTS, SLOT_S_STORE)
+	organs = list(
+		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
+		ORGAN_SLOT_HEART = /obj/item/organ/heart,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes,
+		ORGAN_SLOT_EARS = /obj/item/organ/ears/goblin,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
+		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
+		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
+		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
+		ORGAN_SLOT_ANUS = /obj/item/organ/filling_organ/anus,
+		)
+	offset_features = list(
+		OFFSET_ID = list(0,-4), OFFSET_GLOVES = list(0,0), OFFSET_WRISTS = list(0,0),\
+		OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,-4), OFFSET_HEAD = list(0,-4), \
+		OFFSET_FACE = list(0,-4), OFFSET_BELT = list(0,-4), OFFSET_BACK = list(0,-3), \
+		OFFSET_NECK = list(0,-4), OFFSET_MOUTH = list(0,-4), OFFSET_PANTS = list(0,0), \
+		OFFSET_SHIRT = list(0,0), OFFSET_ARMOR = list(0,0), OFFSET_HANDS = list(0,-3), \
+		OFFSET_ID_F = list(0,-5), OFFSET_GLOVES_F = list(0,-4), OFFSET_WRISTS_F = list(0,-4), OFFSET_HANDS_F = list(0,-4), \
+		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-5), OFFSET_HEAD_F = list(0,-5), \
+		OFFSET_FACE_F = list(0,-5), OFFSET_BELT_F = list(0,-4), OFFSET_BACK_F = list(0,-4), \
+		OFFSET_NECK_F = list(0,-5), OFFSET_MOUTH_F = list(0,-5), OFFSET_BUTT = list(0,-4), OFFSET_PANTS_F = list(0,0), \
+		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0), \
+		)
 	nojumpsuit = 1
 	sexes = 1
-	offset_features = list(OFFSET_HANDS = list(0,-4), OFFSET_HANDS_F = list(0,-4))
 	damage_overlay_type = ""
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	var/raceicon = "goblin"
+	fixed_mut_color = "e8b59b"
+	custom_clothes = TRUE
+	use_f = TRUE
+	clothes_id = "dwarf"
 
 /datum/species/goblin/regenerate_icons(mob/living/carbon/human/H)
 //	H.cut_overlays()
@@ -189,6 +215,8 @@
 
 /mob/living/carbon/human/species/goblin/update_inv_head()
 	update_wearable()
+/mob/living/carbon/human/species/goblin/update_inv_pants()
+	update_wearable()
 /mob/living/carbon/human/species/goblin/update_inv_armor()
 	update_wearable()
 
@@ -244,13 +272,10 @@
 
 /datum/component/rot/corpse/goblin/process()
 	var/amt2add = 10 //1 second
-	var/time_elapsed = last_process ? (world.time - last_process)/10 : 1
 	if(last_process)
 		amt2add = ((world.time - last_process)/10) * amt2add
 	last_process = world.time
 	amount += amt2add
-	if(has_world_trait(/datum/world_trait/pestra_mercy))
-		amount -= 5 * time_elapsed
 	var/mob/living/carbon/C = parent
 	if(!C)
 		qdel(src)
@@ -259,12 +284,15 @@
 		qdel(src)
 		return
 	var/should_update = FALSE
-	if(amount > 20 MINUTES)
+	if(amount > 8 MINUTES)
+		C.visible_message(span_notice("The Goblin decomposes..."))
+		qdel(C)
+		/*
 		for(var/obj/item/bodypart/B in C.bodyparts)
 			if(!B.skeletonized)
 				B.skeletonized = TRUE
-				should_update = TRUE
-	else if(amount > 12 MINUTES)
+				should_update = TRUE*/
+	else if(amount > 4 MINUTES)
 		for(var/obj/item/bodypart/B in C.bodyparts)
 			if(!B.rotted)
 				B.rotted = TRUE
@@ -272,13 +300,13 @@
 			if(B.rotted)
 				var/turf/open/T = C.loc
 				if(istype(T))
-					T.pollute_turf(/datum/pollutant/rot, 1)
+					T.add_pollutants(/datum/pollutant/rot, 1)
 	if(should_update)
-		if(amount > 20 MINUTES)
+		if(amount > 8 MINUTES)
 			C.update_body()
 			qdel(src)
 			return
-		else if(amount > 12 MINUTES)
+		else if(amount > 4 MINUTES)
 			C.update_body()
 
 
@@ -413,3 +441,282 @@
 /obj/structure/gob_portal/Destroy()
 	soundloop.stop()
 	. = ..()
+
+//gotta not randomize the sizes cuz bandaid fix, also to give them their proper organs.
+/mob/living/carbon/human/species/goblin/give_genitals()
+	erpable = TRUE
+	if(sexcon == null)
+		sexcon = new /datum/sex_controller(src)
+	if(!issimple(src))
+		var/mob/living/carbon/human/species/user = src
+		if(!user.getorganslot(ORGAN_SLOT_ANUS))
+			var/obj/item/organ/filling_organ/anus/ass = user.getorganslot(ORGAN_SLOT_ANUS)
+			ass = new /obj/item/organ/filling_organ/anus
+			ass.Insert(user, TRUE)
+		if(gender == MALE)
+			var/obj/item/organ/filling_organ/testicles/testicles = user.getorganslot(ORGAN_SLOT_TESTICLES)
+			if(!show_genitals)
+				testicles = new /obj/item/organ/filling_organ/testicles/internal
+			else
+				testicles = new  ball_organ
+			testicles.Insert(user, TRUE)
+			var/obj/item/organ/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
+			if(!show_genitals)
+				penis = new /obj/item/organ/penis/internal
+			else
+				penis = new penis_organ
+			penis.Insert(user, TRUE)
+		if(gender == FEMALE)
+			var/obj/item/organ/butt/buttie = user.getorganslot(ORGAN_SLOT_BUTT)
+			if(!show_genitals)
+				buttie = new /obj/item/organ/butt/internal
+			else
+				buttie = new ass_organ
+			if(buttie)
+				buttie.Insert(user, TRUE)
+			var/obj/item/organ/filling_organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
+			if(!show_genitals)
+				breasts = new /obj/item/organ/filling_organ/breasts/internal
+			else
+				breasts = new breast_organ
+			breasts.organ_size = rand(3,4)
+			breasts.Insert(user, TRUE)
+			var/obj/item/organ/filling_organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
+			if(!show_genitals)
+				vagina = new /obj/item/organ/filling_organ/vagina/internal
+			else
+				vagina = new /obj/item/organ/filling_organ/vagina/goblin
+			vagina.Insert(user, TRUE)
+			if(prob(3)) //3 chance to be dickgirl.
+				var/obj/item/organ/filling_organ/testicles/testicles = user.getorganslot(ORGAN_SLOT_TESTICLES)
+				if(!show_genitals)
+					testicles = new /obj/item/organ/filling_organ/testicles/internal
+				else
+					testicles = new ball_organ
+				testicles.Insert(user, TRUE)
+				var/obj/item/organ/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
+				if(!show_genitals)
+					penis = new /obj/item/organ/penis/internal
+				else
+					penis = new penis_organ
+				penis.Insert(user, TRUE)
+//	src.sexcon.manual_arousal = SEX_MANUAL_AROUSAL_MAX
+
+//custom genital slop, could not do it a better way.
+
+/obj/item/organ/butt/goblin
+	name = "goblin butt"
+	accessory_type = /datum/sprite_accessory/butt/goblin
+
+/datum/sprite_accessory/butt/goblin
+	name = "goblin butt"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblin"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/penis/goblin
+	name = "goblin penis"
+	accessory_type = /datum/sprite_accessory/penis/goblin
+
+/datum/sprite_accessory/penis/goblin
+	name = "goblin penis"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblin"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/testicles/goblin
+	name = "goblin testicles"
+	accessory_type = /datum/sprite_accessory/testicles/goblin
+
+/datum/sprite_accessory/testicles/goblin
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinballs"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/breasts/goblin
+	name = "goblin breasts"
+	accessory_type = /datum/sprite_accessory/breasts/goblin
+
+/datum/sprite_accessory/breasts/goblin
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinbreasts"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/vagina/goblin
+	name = "goblin vagina"
+	accessory_type = /datum/sprite_accessory/vagina/goblin
+
+/datum/sprite_accessory/vagina/goblin
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinpussy"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+//
+
+/obj/item/organ/butt/goblin/sea
+	name = "goblin butt"
+	accessory_type = /datum/sprite_accessory/butt/goblin/sea
+
+/datum/sprite_accessory/butt/goblin/sea
+	name = "goblin butt"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinsea"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/penis/goblin/sea
+	name = "goblin penis"
+	accessory_type = /datum/sprite_accessory/penis/goblin/sea
+
+/datum/sprite_accessory/penis/goblin/sea
+	name = "goblin penis"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinsea"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/testicles/goblin/sea
+	name = "goblin testicles"
+	accessory_type = /datum/sprite_accessory/testicles/goblin/sea
+
+/datum/sprite_accessory/testicles/goblin/sea
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinseaballs"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/breasts/goblin/sea
+	name = "goblin breasts"
+	accessory_type = /datum/sprite_accessory/breasts/goblin/sea
+
+/datum/sprite_accessory/breasts/goblin/sea
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinseabreasts"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+//
+
+/obj/item/organ/butt/goblin/cave
+	name = "goblin butt"
+	accessory_type = /datum/sprite_accessory/butt/goblin/cave
+
+/datum/sprite_accessory/butt/goblin/cave
+	name = "goblin butt"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblincave"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/penis/goblin/cave
+	name = "goblin penis"
+	accessory_type = /datum/sprite_accessory/penis/goblin/cave
+
+/datum/sprite_accessory/penis/goblin/cave
+	name = "goblin penis"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblincave"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/testicles/goblin/cave
+	name = "goblin testicles"
+	accessory_type = /datum/sprite_accessory/testicles/goblin/cave
+
+/datum/sprite_accessory/testicles/goblin/cave
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblincaveballs"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/breasts/goblin/cave
+	name = "goblin breasts"
+	accessory_type = /datum/sprite_accessory/breasts/goblin/cave
+
+/datum/sprite_accessory/breasts/goblin/cave
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblincavebreasts"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+//
+
+/obj/item/organ/butt/goblin/hell
+	name = "goblin butt"
+	accessory_type = /datum/sprite_accessory/butt/goblin/hell
+
+/datum/sprite_accessory/butt/goblin/hell
+	name = "goblin butt"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinhell"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/penis/goblin/hell
+	name = "goblin penis"
+	accessory_type = /datum/sprite_accessory/penis/goblin/hell
+
+/datum/sprite_accessory/penis/goblin/hell
+	name = "goblin penis"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinhell"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/testicles/goblin/hell
+	name = "goblin testicles"
+	accessory_type = /datum/sprite_accessory/testicles/goblin/hell
+
+/datum/sprite_accessory/testicles/goblin/hell
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinhellballs"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/breasts/goblin/hell
+	name = "goblin breasts"
+	accessory_type = /datum/sprite_accessory/breasts/goblin/hell
+
+/datum/sprite_accessory/breasts/goblin/hell
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinhellbreasts"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+//
+
+/obj/item/organ/butt/goblin/moon
+	name = "goblin butt"
+	accessory_type = /datum/sprite_accessory/butt/goblin/moon
+
+/datum/sprite_accessory/butt/goblin/moon
+	name = "goblin butt"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinmoon"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/penis/goblin/moon
+	name = "goblin penis"
+	accessory_type = /datum/sprite_accessory/penis/goblin/moon
+
+/datum/sprite_accessory/penis/goblin/moon
+	name = "goblin penis"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinmoon"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/testicles/goblin/moon
+	name = "goblin testicles"
+	accessory_type = /datum/sprite_accessory/testicles/goblin/moon
+
+/datum/sprite_accessory/testicles/goblin/moon
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinmoonballs"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/obj/item/organ/filling_organ/breasts/goblin/moon
+	name = "goblin breasts"
+	accessory_type = /datum/sprite_accessory/breasts/goblin/moon
+
+/datum/sprite_accessory/breasts/goblin/moon
+	name = "goblin"
+	icon = 'modular_stonehedge/icons/roguetown/mob/monster/goblinbits.dmi'
+	icon_state = "goblinmoonbreasts"
+	color_key_defaults = list(KEY_SKIN_COLOR)
